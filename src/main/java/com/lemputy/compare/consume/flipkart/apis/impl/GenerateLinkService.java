@@ -5,6 +5,7 @@ import com.lemputy.compare.consume.flipkart.apis.IGenerateLinksService;
 import com.lemputy.compare.consume.flipkart.models.productFeed.ApiListings;
 import com.lemputy.compare.consume.flipkart.models.productFeed.ProductFeed;
 import com.lemputy.compare.consume.flipkart.utils.MakeConnection;
+import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,6 +16,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.util.*;
 
+
+@Service
 public class GenerateLinkService implements IGenerateLinksService {
 
     private static final String AFFILIATE_ID_KEY = "Fk-Affiliate-Id";
@@ -24,6 +27,9 @@ public class GenerateLinkService implements IGenerateLinksService {
 
     MakeConnection connect = new MakeConnection();
 
+    /**
+     * Generates the name and associated URLs of all the products listed on Flipkart
+     */
     @Override
     public Map<String, String> getProductCategoryUrls() {
         String url = "https://affiliate-api.flipkart.net/affiliate/api/ramendu98.json";
