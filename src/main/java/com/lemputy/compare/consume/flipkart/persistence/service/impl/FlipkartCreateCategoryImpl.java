@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -22,16 +24,20 @@ public class FlipkartCreateCategoryImpl implements IFlipkartCategoryService{
     private FlipkartCategoryRepository flipkartCategoryRepository;
 
     @Override
-    public void createCategories(FlipkartCategories categories, Map<String, String> categoriesMap) {
+    public void createCategories(Map<String, String> categoriesMap) {
+
+        FlipkartCategories cats = new FlipkartCategories();
+        List<FlipkartCategories> categories = new LinkedList<>();
         Iterator iterator = categoriesMap.entrySet().iterator();
+
         while (iterator.hasNext()) {
             Map.Entry pair = (Map.Entry) iterator.next();
-            categories.setCategoryName(pair.getKey().toString());
-            categories.setCategoryUrl(pair.getValue().toString());
+            cats.setCategoryName(pair.getKey().toString());
+            cats.setCategoryUrl(pair.getValue().toString());
+            flipkartCategoryRepository.save(cats);
+            //categories.add(cats);
+            System.out.println("Going to persist id ===>>"+cats.getId()+"--"+cats.getCategoryName());
         }
-
-        System.out.println("Camer here debug");
-        flipkartCategoryRepository.save(categories);
-        System.out.println("out");
+        //flipkartCategoryRepository.saveAll(categories);
     }
 }

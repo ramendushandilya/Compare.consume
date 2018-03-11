@@ -2,6 +2,7 @@ package com.lemputy.compare.consume.flipkart.persistence.service;
 
 import com.lemputy.compare.consume.flipkart.persistence.domain.FlipkartCategories;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -11,6 +12,6 @@ import java.util.Map;
  */
 public interface IFlipkartCategoryService {
 
-    void createCategories(FlipkartCategories categories, Map<String , String> categoriesMap);
+    void createCategories(Map<String , String> categoriesMap);
 
 }

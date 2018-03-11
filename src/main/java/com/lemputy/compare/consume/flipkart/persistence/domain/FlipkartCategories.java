@@ -1,9 +1,6 @@
 package com.lemputy.compare.consume.flipkart.persistence.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * @author rams0516
@@ -16,6 +13,7 @@ public class FlipkartCategories {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "catId", nullable = false, updatable = false)
     private Long id;
 
     private String categoryName;
